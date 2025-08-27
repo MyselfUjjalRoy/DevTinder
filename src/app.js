@@ -2,36 +2,34 @@ const express = require("express");
 
 const app = express();
 
-app.use("/user",(req, res , next)=>{
-  //route handler
-  console.log("Handling the route user 2!!")
-  next();
-  //res.send("Response 1");
-},
-(req, res , next)=>{
-  //route handler
-  console.log("Handling the route user 2!!")
-  next();
-  //res.send("Second Response");
-},
-(req, res , next)=>{
-  //route handler
-  console.log("Handling the route user 3!!")
-   next();
-   //res.send("Third Response");
-},
-(req, res , next)=>{
-  //route handler
-  console.log("Handling the route user 4!!")
-  //res.send("Fourth Response");
-  next();
-},
-(req, res , next)=>{
-  //route handler
-  console.log("Handling the route user 5!!")
-  res.send("Fifth Response");
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    //Log your error message
+    console.error(err.message);
+    res.status(500).send("Something went wrong");
+  }
+});
 
-})
+app.get("/getUserData", (req, res) => {
+  //Logic of DB call and get user data
+
+  // try {
+     throw new Error("dbdjd");
+
+  //   res.send("User data sent");
+  // } catch (error) {
+  //   res.status(500).send("Something error contact support team");
+  // }
+});
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    //Log your error message
+    console.error(err.message);
+    res.status(500).send("Something went wrong");
+  }
+});
+
+
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
